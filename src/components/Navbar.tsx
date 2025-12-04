@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Rocket } from 'lucide-react';
 import { NAV_ITEMS } from '../Constants';
+import { Page } from '../types';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onNavigate: (page: Page) => void;
+  currentPage: Page;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -13,6 +19,8 @@ const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const isHome = currentPage === 'home';
 
   // Text color logic: White when at top (on blue hero), Dark when scrolled (on white bg)
   const textColorClass = scrolled ? 'text-slate-600 hover:text-primary-600' : 'text-white/90 hover:text-white';
@@ -41,10 +49,16 @@ const Navbar: React.FC = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className={`font-medium transition-colors ${buttonSignInClass}`}>
+            <button 
+              onClick={() => onNavigate('signin')}
+              className={`font-medium transition-colors ${buttonSignInClass}`}
+            >
               Sign In
             </button>
-            <button className={`${buttonSignUpClass} px-6 py-2.5 rounded-full font-bold transition-all shadow-lg hover:-translate-y-0.5`}>
+            <button 
+              onClick={() => onNavigate('signup')}
+              className={`${buttonSignUpClass} px-6 py-2.5 rounded-full font-bold transition-all shadow-lg hover:-translate-y-0.5`}
+            >
               Sign Up
             </button>
           </div>
@@ -72,10 +86,16 @@ const Navbar: React.FC = () => {
             À propos
           </a>
           <div className="flex flex-col gap-3 pt-2 border-t border-slate-100">
-            <button className="w-full text-slate-600 border border-slate-200 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors">
+            <button 
+              onClick={() => { onNavigate('signin'); setIsOpen(false); }}
+              className="w-full text-slate-600 border border-slate-200 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors"
+            >
               Sign In
             </button>
-            <button className="w-full bg-primary-600 text-white py-3 rounded-xl font-bold shadow-md hover:bg-primary-700 transition-colors">
+            <button 
+              onClick={() => { onNavigate('signup'); setIsOpen(false); }}
+              className="w-full bg-primary-600 text-white py-3 rounded-xl font-bold shadow-md hover:bg-primary-700 transition-colors"
+            >
               Sign Up
             </button>
           </div>

@@ -1,14 +1,25 @@
 import React from 'react';
 import { Rocket, Twitter, Github, Linkedin, Instagram } from 'lucide-react';
+import { Page } from '../types';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (page: Page) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-white border-t border-slate-100 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center mb-6">
+            <div 
+              className="flex items-center mb-6 cursor-pointer"
+              onClick={() => {
+                onNavigate('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
               <div className="bg-primary-600 p-1.5 rounded-lg mr-2">
                  <Rocket className="h-5 w-5 text-white" />
               </div>
@@ -28,9 +39,9 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Produit</h4>
             <ul className="space-y-3 text-sm text-slate-500">
-              <li><a href="#" className="hover:text-primary-600 transition-colors">Templates</a></li>
-              <li><a href="#" className="hover:text-primary-600 transition-colors">Fonctionnalités</a></li>
-              <li><a href="#" className="hover:text-primary-600 transition-colors">Tarifs</a></li>
+              <li><button onClick={() => onNavigate('home')} className="hover:text-primary-600 transition-colors">Templates</button></li>
+              <li><button onClick={() => onNavigate('home')} className="hover:text-primary-600 transition-colors">Fonctionnalités</button></li>
+              <li><button onClick={() => onNavigate('home')} className="hover:text-primary-600 transition-colors">Tarifs</button></li>
             </ul>
           </div>
 
@@ -38,9 +49,9 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Entreprise</h4>
             <ul className="space-y-3 text-sm text-slate-500">
-              <li><a href="#" className="hover:text-primary-600 transition-colors">À propos</a></li>
-              <li><a href="#" className="hover:text-primary-600 transition-colors">Carrières</a></li>
-              <li><a href="#" className="hover:text-primary-600 transition-colors">Blog</a></li>
+              <li><button onClick={() => onNavigate('home')} className="hover:text-primary-600 transition-colors">À propos</button></li>
+              <li><button onClick={() => onNavigate('home')} className="hover:text-primary-600 transition-colors">Carrières</button></li>
+              <li><button onClick={() => onNavigate('home')} className="hover:text-primary-600 transition-colors">Blog</button></li>
             </ul>
           </div>
 
