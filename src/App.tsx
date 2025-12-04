@@ -1,10 +1,22 @@
-import MainLayout from "./layout/MainLayout";
-import Home from "./pages/Home";
+import React from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Testimonials from './components/Testimonials';
+import Features from './components/Features';
+import Footer from './components/Footer';
 
-export default function App() {
+const App: React.FC = () => {
   return (
-    <MainLayout>
-      <Home />
-    </MainLayout>
+    <div className="min-h-screen flex flex-col bg-white">
+      <Navbar />
+      <main className="flex-grow">
+        <Hero />
+        <Testimonials />
+        <Features />
+      </main>
+      <Footer />
+    </div>
   );
-}
+};
+
+export default App;
