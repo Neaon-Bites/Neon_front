@@ -3,7 +3,7 @@ import { ArrowRight, Play, CheckCircle2 } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-32 lg:pt-48 lg:pb-60 overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-indigo-900">
+    <section className="relative pt-32 pb-32 lg:pt-48 lg:pb-60 overflow-hidden bg-linear-to-br from-primary-600 via-primary-700 to-indigo-900">
       
       {/* Abstract Shapes/Glows */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -16,10 +16,6 @@ const Hero: React.FC = () => {
           
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium text-sm mb-8 animate-fade-in-up shadow-lg">
-              <span className="flex h-2 w-2 rounded-full bg-green-400 mr-2 animate-pulse"></span>
-              Version 2.0 maintenant disponible
-            </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
               Créez votre site. <br/>

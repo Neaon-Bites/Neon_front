@@ -102,12 +102,6 @@ const Templates: React.FC = () => {
               key={template.id} 
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
             >
-              {/* Badge populaire */}
-              {template.popular && (
-                <div className="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                  POPULAIRE
-                </div>
-              )}
 
               {/* Image */}
               <div className="h-48 overflow-hidden">
@@ -165,7 +159,7 @@ const Templates: React.FC = () => {
 
         {/* CTA */}
         <div className="mt-20 text-center">
-          <div className="bg-gradient-to-r from-primary-500 to-indigo-600 rounded-2xl p-12 text-white">
+          <div className="bg-linear-to-r from-primary-500 to-indigo-600 rounded-2xl p-12 text-white">
             <h3 className="text-3xl font-bold mb-4">Besoin d'un template personnalisé ?</h3>
             <p className="text-xl mb-8 opacity-90">
               Notre équipe peut créer un template sur mesure pour vos besoins spécifiques.

@@ -20,7 +20,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
-      <main className="flex-grow">
+      <main className="grow">
         {currentPage === 'home' && (
           <>
         <Hero />
