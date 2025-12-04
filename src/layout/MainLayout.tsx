@@ -1,4 +1,10 @@
-export default function MainLayout({ children }) {
+import React, { ReactNode } from 'react';
+
+interface MainLayoutProps {
+    children: ReactNode;
+}
+
+export default function MainLayout({ children }: MainLayoutProps) {
     return (
       <div className="min-h-screen bg-black text-white">
         <header className="border-b border-cyan-500 p-4">
