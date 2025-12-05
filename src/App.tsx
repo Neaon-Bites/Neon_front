@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './pages/About';
@@ -8,6 +8,7 @@ import Features from './components/Features';
 import Footer from './components/Footer';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import AdminDashboard from './pages/admin/AdminDashboard';
 import { Page } from './types';
 
 const App: React.FC = () => {
@@ -17,18 +18,23 @@ const App: React.FC = () => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
+      {/* Ne pas afficher Navbar/Footer sur la page admin */}
+      {currentPage !== 'admin' && (
+        <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
+      )}
+      
       <main className="grow">
         {currentPage === 'home' && (
           <>
-        <Hero />
-        <About />
-        <Templates />
-        <Testimonials />
-        <Features />
-         </>
+            <Hero />
+            <About />
+            <Templates />
+            <Testimonials />
+            <Features />
+          </>
         )}
         
         {currentPage === 'signin' && (
@@ -38,8 +44,16 @@ const App: React.FC = () => {
         {currentPage === 'signup' && (
           <SignUp onNavigate={handleNavigate} />
         )}
+
+        {currentPage === 'admin' && (
+          <AdminDashboard />
+        )}
       </main>
-      <Footer onNavigate={handleNavigate} />
+
+      {/* Ne pas afficher Footer sur la page admin */}
+      {currentPage !== 'admin' && (
+        <Footer onNavigate={handleNavigate} />
+      )}
     </div>
   );
 };
