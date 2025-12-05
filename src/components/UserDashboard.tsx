@@ -11,7 +11,9 @@ import { Page } from '../types';
 // --- Dashboard Types ---
 type PageType = 'home' | 'about' | 'contact' | 'custom' | 'crisis';
 type SectionType = 'hero' | 'text' | 'image' | 'products' | 'form';
-
+interface DashboardProps {
+  onNavigate: (page: Page) => void;
+}
 interface ProductItem {
   id: string;
   title: string;

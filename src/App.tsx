@@ -9,6 +9,8 @@ import Footer from './components/Footer';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import UserDashboard from './components/UserDashboard';
+import AdminCMS from './pages/admin-cms/admin';
+
 import { Page } from './types';
 
 const App: React.FC = () => {
@@ -50,7 +52,7 @@ const App: React.FC = () => {
         )}
 
         {currentPage === 'admin' && (
-          <AdminDashboard />
+          <AdminCMS onNavigate={handleNavigate} />
         )}
       </main>
 
