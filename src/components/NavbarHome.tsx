@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Menu, X, Rocket, Shield, LogIn, UserPlus } from 'lucide-react'; 
-import { Page } from '../types';
+import { Menu, X, Rocket, Shield, LogIn, UserPlus } from 'lucide-react'; // Ajout des icônes d'action
+// import { NAV_ITEMS } from '../Constants'; 
+// import { Page } from '../types';
 
 interface NavbarProps {
-  onNavigate: (page: Page) => void;
-  currentPage: Page;
+  onNavigate: (page: any) => void;
+  currentPage: any;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => { 
@@ -26,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
     // Classes de base pour les liens de navigation (desktop)
     const baseLinkClass = "font-medium transition-all relative group hover:opacity-80 hover:scale-[1.02]"; 
 
-    // Les liens de navigation de bureau changent de couleur (Blanc -> Noir/Gris)
+    // MODIFICATION 1: Les liens de navigation de bureau changent de couleur (Blanc -> Noir/Gris)
     const linkColorClass = isScrolled ? 'text-slate-900' : 'text-white/90'; 
       
     // Style du soulignement animé (underline animation)
@@ -45,12 +46,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
       // Classe combinée pour les liens de navigation de bureau (Dynamique + animation)
       navLinkClass: `${baseLinkClass} ${linkColorClass} ${underlineAnimationClass}`,
 
-      // Logo Icon: Primaire défilé, Blanc non défilé
+      // MODIFICATION 2: Logo Icon: Primaire défilé, Blanc non défilé (plus simple)
       logoIconColor: isScrolled
         ? 'text-primary-600'
         : 'text-white',
       
-      // Logo Texte: Noir défilé, Blanc non défilé
+      // MODIFICATION 3: Logo Texte: Noir défilé, Blanc non défilé
       logoTextColor: isScrolled
         ? 'text-slate-900'
         : 'text-white', 
@@ -70,11 +71,11 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   // ---------------------------------------------------
 
   // Fonction utilitaire pour le lien de navigation
-  const NavLink = ({ page, label, href = '#' }: { page: Page, label: string, href?: string }) => (
+  const NavLink = ({ page, label, href = '#' }: { page: string, label: string, href?: string }) => (
     <a
       href={href}
       onClick={(e) => {
-        e.preventDefault(); 
+        // e.preventDefault(); 
         onNavigate(page);
         setIsOpen(false);
       }}
@@ -100,6 +101,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             className="flex items-center cursor-pointer gap-2"
           >
             <div
+              // MODIFICATION 4: Style du fond du logo ajusté
               className={`p-1.5 rounded-lg transition-colors ${
                 scrolled ? 'bg-primary-50' : 'bg-white/10 backdrop-blur-sm'
               }`}

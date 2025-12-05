@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
+
+// 🔵 Navbars
+import NavbarHome from './components/NavbarHome';
+import NavbarDefault from './components/NavbarDefault';
+
+// Pages et composants
 import Hero from './components/Hero';
 import About from './pages/About';
 import Templates from './pages/Templates';
 import Testimonials from './components/Testimonials';
+import Template from './components/templates'
 import Features from './components/Features';
 import Footer from './components/Footer';
 import SignIn from './components/SignIn';
@@ -23,12 +29,19 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* Ne pas afficher Navbar/Footer sur la page admin */}
+
+      {/* === NAVIGATION === */}
       {currentPage !== 'admin' && (
-        <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
+        currentPage === 'home' ? (
+          <NavbarHome onNavigate={handleNavigate} currentPage={currentPage} />
+        ) : (
+          <NavbarDefault onNavigate={handleNavigate} currentPage={currentPage} />
+        )
       )}
-      
+
+      {/* === CONTENU === */}
       <main className="grow">
+
         {currentPage === 'home' && (
           <>
             <Hero />
@@ -38,7 +51,7 @@ const App: React.FC = () => {
             <Features />
           </>
         )}
-        
+
         {currentPage === 'dashboard' && (
           <UserDashboard onNavigate={handleNavigate} />
         )}
@@ -51,17 +64,24 @@ const App: React.FC = () => {
           <SignUp onNavigate={handleNavigate} />
         )}
 
+        {currentPage === 'templates' && (
+          <Template onNavigate={handleNavigate} />
+        )}
+
         {currentPage === 'admin' && (
           <AdminCMS onNavigate={handleNavigate} />
         )}
+
       </main>
 
-      {/* Ne pas afficher Footer sur la page admin */}
+      {/* === FOOTER === */}
       {currentPage !== 'admin' && (
         <Footer onNavigate={handleNavigate} />
       )}
+
     </div>
   );
 };
 
 export default App;
+
