@@ -8,7 +8,7 @@ interface NavbarProps {
   currentPage: any;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => { 
+const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => { 
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 

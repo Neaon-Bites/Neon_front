@@ -10,7 +10,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import UserDashboard from './components/UserDashboard';
 import AdminCMS from './pages/admin-cms/admin';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Page } from './types';
 
 const App: React.FC = () => {
@@ -31,7 +31,7 @@ const App: React.FC = () => {
       <main className="grow">
         {currentPage === 'home' && (
           <>
-            <Hero />
+            <Hero onNavigate={handleNavigate} />
             <About />
             <Templates />
             <Testimonials />
@@ -39,7 +39,7 @@ const App: React.FC = () => {
           </>
         )}
         
-        {currentPage === 'dashboard' && (
+        {currentPage === 'userDashboard' && (
           <UserDashboard onNavigate={handleNavigate} />
         )}
 

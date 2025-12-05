@@ -1,12 +1,17 @@
 import React from 'react';
 import { ArrowRight, Play, CheckCircle2 } from 'lucide-react';
+import { Page } from "../types";
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onNavigate: (page: Page) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onNavigate })=> {
   return (
     <section className="relative 
       min-h-[95vh] flex items-center pt-24 pb-12 overflow-hidden 
       /* MODIFIÉ: Nouveau dégradé sombre (Bleu/Ardoise profond) */
-      bg-gradient-to-br from-slate-900 via-indigo-950 to-gray-900">
+      bg-linear-to-br from-slate-900 via-indigo-950 to-gray-900">
       
       {/* Abstract Shapes/Glows */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -33,13 +38,17 @@ const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4">
-              <button className="w-full sm:w-auto flex items-center justify-center 
-                /* MODIFIÉ: Bouton Principal utilise la couleur primaire pour le contraste */
-                bg-primary-600 text-white hover:bg-primary-700 text-lg px-8 py-4 rounded-full font-bold transition-all 
-                shadow-[0_10px_40px_-10px_rgba(255,255,255,0.3)] hover:-translate-y-1">
+            <button
+              onClick={() => onNavigate('userDashboard')}
+              className="w-full sm:w-auto flex items-center justify-center 
+                bg-primary-600 text-white hover:bg-primary-700 text-lg px-8 py-4 
+                rounded-full font-bold transition-all 
+                shadow-[0_10px_40px_-10px_rgba(255,255,255,0.3)] hover:-translate-y-1"
+                >
                 Créer un site
                 <ArrowRight className="ml-2 h-5 w-5" />
               </button>
+
               
               <button className="w-full sm:w-auto flex items-center justify-center bg-transparent border-2 border-white/30 hover:bg-white/10 text-white text-lg px-8 py-4 rounded-full font-semibold transition-all backdrop-blur-sm">
                 Voir les templates
