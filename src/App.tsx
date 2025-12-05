@@ -8,6 +8,7 @@ import Features from './components/Features';
 import Footer from './components/Footer';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import UserDashboard from './components/UserDashboard';
 import { Page } from './types';
 
 const App: React.FC = () => {
@@ -31,6 +32,10 @@ const App: React.FC = () => {
          </>
         )}
         
+        {currentPage === 'dashboard' && (
+          <UserDashboard onNavigate={handleNavigate} />
+        )}
+
         {currentPage === 'signin' && (
           <SignIn onNavigate={handleNavigate} />
         )}
