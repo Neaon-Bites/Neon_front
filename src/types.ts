@@ -1,6 +1,6 @@
 import { LucideIcon } from 'lucide-react';
 
-export type Page = 'home' | 'signin' | 'signup'|"admin";
+export type Page = 'home' | 'signin' | 'signup' | 'dashboard';
 
 export interface Testimonial {
   id: number;
